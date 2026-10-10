@@ -80,7 +80,7 @@
   .pill small { font: 600 12px var(--body); letter-spacing: .08em; text-transform: uppercase; margin-left: 8px; color: var(--muted); }
 
   /* pick-ups */
-  .picks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 34px; }
+  .picks { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; margin-top: 34px; }
   .picks .card { padding: 20px; }
   .picks h3 { font-size: 16px; color: var(--yellow); }
 
@@ -93,6 +93,7 @@
     .art { max-width: 420px; order: -1; }
     .rules { grid-template-columns: 1fr; }
     .picks { grid-template-columns: 1fr 1fr; }
+    .picks .card:last-child { grid-column: 1 / -1; }
     section { padding: 50px 0; }
   }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
@@ -127,7 +128,7 @@
     <div class="rules">
       <div class="card"><div class="num">01</div><h3>Swipe to weave</h3><p>Step left and right between waiters, deck crew and loaded trolleys. Bump into someone and you lose pace and 200 points. Hit a trolley and it's off to Medical.</p></div>
       <div class="card"><div class="num">02</div><h3>Stay ahead</h3><p>The Safety Officer walks at the pace you should be keeping. Slow down and he closes in. When he raises his hand, you are nearly out of time.</p></div>
-      <div class="card"><div class="num">03</div><h3>Tap to report</h3><p>The corridor is full of people breaking the rules. Spot one, tap it, and it's worth more than a hundred metres of running.</p></div>
+      <div class="card"><div class="num">03</div><h3>Tap to report</h3><p>The corridor is full of people breaking the rules. Spot one, tap it, and you score. Get it wrong and it costs you three times as much.</p></div>
     </div>
   </div>
 </section>
@@ -138,11 +139,11 @@
     <h2>A shift on the I-95</h2>
     <div class="shots">
       <figure><img src="img/4-safety-officer.jpg" width="540" height="960" loading="lazy" alt="The Safety Officer reaching for the player from behind, with the chase bar red"><figcaption>He is right behind you</figcaption></figure>
-      <figure><img src="img/2-report.jpg" width="540" height="960" loading="lazy" alt="A crew member wearing headphones marked with a green tick and plus 100 points"><figcaption>Report what you spot</figcaption></figure>
+      <figure><img src="img/2-report.jpg" width="540" height="960" loading="lazy" alt="An overloaded trolley marked with a green tick and plus 50 points"><figcaption>Report what you spot</figcaption></figure>
       <figure><img src="img/3-turn-around-day.jpg" width="540" height="960" loading="lazy" alt="Pallets of provisions blocking the corridor under a Turn Around Day countdown"><figcaption>Turn Around Day</figcaption></figure>
-      <figure><img src="img/5-binoculars.jpg" width="540" height="960" loading="lazy" alt="Glowing coffee and a magnet in the corridor while binoculars report violations automatically"><figcaption>Pick up what helps</figcaption></figure>
+      <figure><img src="img/5-binoculars.jpg" width="540" height="960" loading="lazy" alt="A glowing coffee in the corridor while binoculars report violations, with the Use I-94 button ready"><figcaption>Pick up what helps</figcaption></figure>
       <figure><img src="img/1-corridor.jpg" width="540" height="960" loading="lazy" alt="The crew corridor with trolleys, crew and a glowing signature sheet"><figcaption>The corridor</figcaption></figure>
-      <figure><img src="img/6-achievements.jpg" width="540" height="960" loading="lazy" alt="The achievements list with several completed"><figcaption>39 achievements</figcaption></figure>
+      <figure><img src="img/6-achievements.jpg" width="540" height="960" loading="lazy" alt="The achievements list with several completed"><figcaption>44 achievements</figcaption></figure>
     </div>
   </div>
 </section>
@@ -155,7 +156,7 @@
       <div class="eyebrow">Keep your eyes open</div>
       <h2>Spot it. Tap it. Report it.</h2>
       <p class="intro">Every one of these is a safety observation. Report it and you score. Report someone who is doing nothing wrong and it costs you more than you would have won.</p>
-      <div class="score"><span class="pill good">+100<small>correct report</small></span><span class="pill bad">&minus;150<small>false report</small></span></div>
+      <div class="score"><span class="pill good">+50<small>correct report</small></span><span class="pill bad">&minus;150<small>false report</small></span></div>
     </div>
     <ul>
       <li>A trolley stacked above head height</li>
@@ -175,7 +176,8 @@
       <div class="card"><h3>Coffee</h3><p>A burst of speed to shake the Safety Officer off.</p></div>
       <div class="card"><h3>Signature sheet</h3><p>A second chance when you hit a trolley, if you use it in time.</p></div>
       <div class="card"><h3>Magnet</h3><p>For 30 seconds, everything worth collecting comes to you.</p></div>
-      <div class="card"><h3>Binoculars</h3><p>For 30 seconds, every violation that comes near is reported for you.</p></div>
+      <div class="card"><h3>Binoculars</h3><p>For 15 seconds, every violation that comes near is reported for you.</p></div>
+      <div class="card"><h3>Use I-94</h3><p>A detour sign. Keep it, and use it to skip the rest of a Turn Around Day.</p></div>
     </div>
     <p class="intro" style="margin-top: 28px">And then there is your phone. The score counts double while it is in your hand, but you can barely see where you are going.</p>
   </div>
