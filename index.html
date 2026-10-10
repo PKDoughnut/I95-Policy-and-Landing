@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>I95: Safety Run</title>
+<meta name="description" content="Late for your shift at sea. Dodge trolleys, report safety violations and outrun the Safety Officer. A free mobile game with no ads.">
+<meta property="og:title" content="I95: Safety Run">
+<meta property="og:description" content="Late for your shift at sea. Dodge trolleys and outrun the Safety Officer.">
+<meta property="og:image" content="img/share.jpg">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0f1825">
+<link rel="icon" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<style>
+  :root {
+    --navy: #0f1825; --navy-2: #172438; --line: #2a3a54;
+    --yellow: #ffc938; --cream: #faf7ee; --muted: #a9b6c9; --green: #3ecf6a; --red: #ff6257;
+    --display: "Arial Black", "Segoe UI Black", Impact, system-ui, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--navy); color: var(--cream); font: 17px/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+  img { display: block; max-width: 100%; }
+  a { color: var(--yellow); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 22px; }
+  h1, h2, h3 { font-family: var(--display); line-height: 1.05; margin: 0; letter-spacing: .01em; text-wrap: balance; }
+  h2 { font-size: clamp(26px, 4.4vw, 40px); text-transform: uppercase; }
+  h3 { font-size: 19px; text-transform: uppercase; letter-spacing: .03em; }
+  p { margin: 0; }
+  .eyebrow { font: 700 13px var(--body); letter-spacing: .2em; text-transform: uppercase; color: var(--yellow); margin-bottom: 14px; }
+
+  /* the hazard band from the corridor's door thresholds, used as the divider between sections */
+  .hazard { height: 14px; background: repeating-linear-gradient(-45deg, var(--yellow) 0 18px, #14181f 18px 36px); }
+
+  /* hero */
+  .hero { padding: 56px 0 64px; }
+  .hero .wrap { display: grid; grid-template-columns: 1.05fr .95fr; gap: 48px; align-items: center; }
+  .hero h1 { font-size: clamp(44px, 8.4vw, 86px); text-transform: uppercase; }
+  .hero h1 span { color: var(--yellow); }
+  .hero .lead { font-size: clamp(18px, 2.3vw, 22px); color: var(--cream); margin: 22px 0 8px; max-width: 30ch; }
+  .hero .sub { color: var(--muted); max-width: 46ch; }
+  .art { border-radius: 28px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, .55), 0 0 0 1px var(--line); aspect-ratio: 1; }
+  .art img { width: 100%; height: 100%; object-fit: cover; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 30px; }
+  .store { display: inline-flex; flex-direction: column; justify-content: center; min-height: 58px; padding: 9px 26px; border-radius: 12px;
+    background: var(--yellow); color: #1d1300; text-decoration: none; font: 800 18px var(--body); line-height: 1.15; }
+  .store small { font: 700 11px var(--body); letter-spacing: .14em; text-transform: uppercase; opacity: .75; }
+  .store.soon { background: transparent; color: var(--cream); border: 2px solid var(--yellow); cursor: default; }
+  a.store:hover { filter: brightness(1.06); }
+  a.store:focus-visible, a:focus-visible { outline: 3px solid var(--cream); outline-offset: 3px; }
+  .facts { color: var(--muted); font-size: 14px; }
+
+  section { padding: 68px 0; }
+  section .intro { max-width: 60ch; color: var(--muted); margin-top: 14px; }
+
+  /* three rules of the corridor */
+  .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 34px; }
+  .card { background: var(--navy-2); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+  .card h3 { margin-bottom: 8px; }
+  .card p { color: var(--muted); font-size: 16px; }
+  .card .num { font: 800 13px var(--body); letter-spacing: .16em; color: var(--yellow); margin-bottom: 12px; }
+
+  /* screenshots: a strip that scrolls sideways */
+  .shots { display: flex; gap: 18px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 34px 22px 18px; margin: 0 -22px; -webkit-overflow-scrolling: touch; }
+  .shots figure { flex: none; width: min(64vw, 250px); margin: 0; scroll-snap-align: center; }
+  .shots img { border-radius: 22px; border: 5px solid #05080d; box-shadow: 0 14px 34px rgba(0, 0, 0, .5); aspect-ratio: 9 / 16; width: 100%; object-fit: cover; background: var(--navy-2); }
+  .shots figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 10px; }
+
+  /* what to report */
+  .report .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+  .report ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+  .report li { background: var(--navy-2); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px 13px 46px; position: relative; }
+  .report li::before { content: '!'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%;
+    background: var(--yellow); color: #1d1300; font: 800 14px/22px var(--body); text-align: center; }
+  .score { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
+  .pill { font: 800 20px var(--display); padding: 8px 16px; border-radius: 999px; border: 2px solid currentColor; }
+  .pill.good { color: var(--green); } .pill.bad { color: var(--red); }
+  .pill small { font: 600 12px var(--body); letter-spacing: .08em; text-transform: uppercase; margin-left: 8px; color: var(--muted); }
+
+  /* pick-ups */
+  .picks { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 34px; }
+  .picks .card { padding: 20px; }
+  .picks h3 { font-size: 16px; color: var(--yellow); }
+
+  footer { padding: 34px 0 48px; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 10px 26px; justify-content: space-between; }
+
+  @media (max-width: 820px) {
+    .hero { padding: 34px 0 48px; }
+    .hero .wrap, .report .wrap { grid-template-columns: 1fr; gap: 30px; }
+    .art { max-width: 420px; order: -1; }
+    .rules { grid-template-columns: 1fr; }
+    .picks { grid-template-columns: 1fr 1fr; }
+    section { padding: 50px 0; }
+  }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">A mobile game set below decks</div>
+      <h1>I95: <span>Safety Run</span></h1>
+      <p class="lead">You're late for your shift, and the Safety Officer is on your tail.</p>
+      <p class="sub">Run the I-95, the crew corridor that goes the length of a cruise ship. Weave through trolleys and crew, report the rules being broken around you, and don't get caught.</p>
+      <div class="cta">
+        <!-- When the game is live on Google Play, replace the span below with:
+             <a class="store" href="https://play.google.com/store/apps/details?id=com.pkartintel.i95"><small>Get it on</small>Google Play</a> -->
+        <span class="store soon"><small>Coming soon to</small>Google Play</span>
+        <span class="facts">Free. No ads. No purchases.<br>Plays offline.</span>
+      </div>
+    </div>
+    <div class="art"><img src="img/art.jpg" width="900" height="900" alt="The I-95 logo above a yellow safety helmet lying on the floor of a ship's crew corridor"></div>
+  </div>
+</header>
+
+<div class="hazard" role="presentation"></div>
+
+<section>
+  <div class="wrap">
+    <div class="eyebrow">How it plays</div>
+    <h2>One corridor. Everyone's in it.</h2>
+    <div class="rules">
+      <div class="card"><div class="num">01</div><h3>Swipe to weave</h3><p>Step left and right between waiters, deck crew and loaded trolleys. Bump into someone and you lose pace and 200 points. Hit a trolley and it's off to Medical.</p></div>
+      <div class="card"><div class="num">02</div><h3>Stay ahead</h3><p>The Safety Officer walks at the pace you should be keeping. Slow down and he closes in. When he raises his hand, you are nearly out of time.</p></div>
+      <div class="card"><div class="num">03</div><h3>Tap to report</h3><p>The corridor is full of people breaking the rules. Spot one, tap it, and it's worth more than a hundred metres of running.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0">
+  <div class="wrap">
+    <div class="eyebrow">Screenshots</div>
+    <h2>A shift on the I-95</h2>
+    <div class="shots">
+      <figure><img src="img/4-safety-officer.jpg" width="540" height="960" loading="lazy" alt="The Safety Officer reaching for the player from behind, with the chase bar red"><figcaption>He is right behind you</figcaption></figure>
+      <figure><img src="img/2-report.jpg" width="540" height="960" loading="lazy" alt="A crew member wearing headphones marked with a green tick and plus 100 points"><figcaption>Report what you spot</figcaption></figure>
+      <figure><img src="img/3-turn-around-day.jpg" width="540" height="960" loading="lazy" alt="Pallets of provisions blocking the corridor under a Turn Around Day countdown"><figcaption>Turn Around Day</figcaption></figure>
+      <figure><img src="img/5-binoculars.jpg" width="540" height="960" loading="lazy" alt="Glowing coffee and a magnet in the corridor while binoculars report violations automatically"><figcaption>Pick up what helps</figcaption></figure>
+      <figure><img src="img/1-corridor.jpg" width="540" height="960" loading="lazy" alt="The crew corridor with trolleys, crew and a glowing signature sheet"><figcaption>The corridor</figcaption></figure>
+      <figure><img src="img/6-achievements.jpg" width="540" height="960" loading="lazy" alt="The achievements list with several completed"><figcaption>39 achievements</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<div class="hazard" role="presentation"></div>
+
+<section class="report">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Keep your eyes open</div>
+      <h2>Spot it. Tap it. Report it.</h2>
+      <p class="intro">Every one of these is a safety observation. Report it and you score. Report someone who is doing nothing wrong and it costs you more than you would have won.</p>
+      <div class="score"><span class="pill good">+100<small>correct report</small></span><span class="pill bad">&minus;150<small>false report</small></span></div>
+    </div>
+    <ul>
+      <li>A trolley stacked above head height</li>
+      <li>A heavy trolley moved by one person</li>
+      <li>A trolley being pulled when it should be pushed</li>
+      <li>A pallet jack operator with no helmet</li>
+      <li>Crew walking with a phone out or headphones on</li>
+    </ul>
+  </div>
+</section>
+
+<section style="padding-top: 0">
+  <div class="wrap">
+    <div class="eyebrow">In the corridor</div>
+    <h2>Pick up what helps</h2>
+    <div class="picks">
+      <div class="card"><h3>Coffee</h3><p>A burst of speed to shake the Safety Officer off.</p></div>
+      <div class="card"><h3>Signature sheet</h3><p>A second chance when you hit a trolley, if you use it in time.</p></div>
+      <div class="card"><h3>Magnet</h3><p>For 30 seconds, everything worth collecting comes to you.</p></div>
+      <div class="card"><h3>Binoculars</h3><p>For 30 seconds, every violation that comes near is reported for you.</p></div>
+    </div>
+    <p class="intro" style="margin-top: 28px">And then there is your phone. The score counts double while it is in your hand, but you can barely see where you are going.</p>
+  </div>
+</section>
+
+<div class="hazard" role="presentation"></div>
+
+<footer>
+  <div class="wrap">
+    <span>I95: Safety Run</span>
+    <span><a href="privacy.html">Privacy policy</a> &nbsp;·&nbsp; <a href="mailto:pkartintel@gmail.com">pkartintel@gmail.com</a></span>
+  </div>
+</footer>
+
+</body>
+</html>
