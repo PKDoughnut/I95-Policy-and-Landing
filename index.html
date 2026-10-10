@@ -72,7 +72,8 @@
   .report .wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
   .report ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
   .report li { background: var(--navy-2); border: 1px solid var(--line); border-radius: 12px; padding: 13px 16px 13px 46px; position: relative; }
-  .report li::before { content: '!'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%;
+  .report li { letter-spacing: .12em; text-transform: uppercase; font-size: 14px; color: var(--muted); }
+  .report li::before { content: '?'; position: absolute; left: 14px; top: 50%; transform: translateY(-50%); width: 22px; height: 22px; border-radius: 50%;
     background: var(--yellow); color: #1d1300; font: 800 14px/22px var(--body); text-align: center; }
   .score { display: flex; gap: 12px; margin-top: 22px; flex-wrap: wrap; }
   .pill { font: 800 20px var(--display); padding: 8px 16px; border-radius: 999px; border: 2px solid currentColor; }
@@ -143,7 +144,7 @@
       <figure><img src="img/3-turn-around-day.jpg" width="540" height="960" loading="lazy" alt="Pallets of provisions blocking the corridor under a Turn Around Day countdown"><figcaption>Turn Around Day</figcaption></figure>
       <figure><img src="img/5-binoculars.jpg" width="540" height="960" loading="lazy" alt="A glowing coffee in the corridor while binoculars report violations, with the Use I-94 button ready"><figcaption>Pick up what helps</figcaption></figure>
       <figure><img src="img/1-corridor.jpg" width="540" height="960" loading="lazy" alt="The crew corridor with trolleys, crew and a glowing signature sheet"><figcaption>The corridor</figcaption></figure>
-      <figure><img src="img/6-achievements.jpg" width="540" height="960" loading="lazy" alt="The achievements list with several completed"><figcaption>44 achievements</figcaption></figure>
+      <figure><img src="img/6-achievements.jpg" width="540" height="960" loading="lazy" alt="The achievements list with several completed"><figcaption>51 achievements</figcaption></figure>
     </div>
   </div>
 </section>
@@ -154,16 +155,12 @@
   <div class="wrap">
     <div>
       <div class="eyebrow">Keep your eyes open</div>
-      <h2>Spot it. Tap it. Report it.</h2>
-      <p class="intro">Every one of these is a safety observation. Report it and you score. Report someone who is doing nothing wrong and it costs you more than you would have won.</p>
+      <h2>Seven things to spot. Find them yourself.</h2>
+      <p class="intro">The corridor is full of people breaking the safety rules, and nobody tells you which rules. Watch how the crew work, decide what looks wrong, and tap it. Report someone who is doing nothing wrong and it costs you three times what you would have won.</p>
       <div class="score"><span class="pill good">+50<small>correct report</small></span><span class="pill bad">&minus;150<small>false report</small></span></div>
     </div>
-    <ul>
-      <li>A trolley stacked above head height</li>
-      <li>A heavy trolley moved by one person</li>
-      <li>A trolley being pulled when it should be pushed</li>
-      <li>A pallet jack operator with no helmet</li>
-      <li>Crew walking with a phone out or headphones on</li>
+    <ul aria-label="Seven kinds of observation, none revealed">
+      <li>Unfound</li><li>Unfound</li><li>Unfound</li><li>Unfound</li><li>Unfound</li><li>Unfound</li><li>Unfound</li>
     </ul>
   </div>
 </section>
